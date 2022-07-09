@@ -1,0 +1,58 @@
+<div class="container">
+    <div class="exit-button">
+        <i class="fa fa-times fa-3x"></i>
+    </div>
+    <h1>Dodaj nowe zwierze</h1>
+    <mat-dialog-content>
+        <form [formGroup]="addAnimalForm" (submit)="onSubmit()" (reset)="onReset()">
+            <div class="form-row">
+                <label for="name">Imię*</label>
+                <input type="text" id="name" name="name" placeholder="np. Bohun" formControlName="name" letter-only>
+                <field-alert [field]="addAnimalForm.controls['name']" [message]="'Imię jest wymagane'">
+                </field-alert>
+            </div>
+            <div class="form-row">
+                <label for="animalType">Gatunek*</label>
+                <select [disabled]="isNewAnimalType" id="animalType-select" (change)="selectAnimalType($event.target!)">
+                    <option>Wybierz..</option>
+                    <option *ngFor="let animalType of animalTypes, let i = index">{{animalType}}</option>
+                </select>
+                <div class="new-animal-type">
+                    <input id="new-animal-type-checkbox" type="checkbox" (change)="updateNewAnimalTypeCheckboxValue($event.target!)">Inny
+                    <input *ngIf="isNewAnimalType" id="new-animal-type-value" type="text" placeholder="Wprowadź nowy gatunek">
+                </div>
+                <field-alert [field]="addAnimalForm.controls['animalType']" [message]="'Gatunek jest wymagany'">
+                </field-alert>
+            </div>
+            <div class="form-row">
+                <label>Płeć*</label>
+                <select (change)="selectGender($event.target!)">
+                    <option>Wybierz..</option>
+                    <option *ngFor="let gender of genders">{{gender}}</option>
+                </select>
+                <field-alert [field]="addAnimalForm.controls['gender']" [message]="'Płeć jest wymagana'">
+                </field-alert>
+            </div>
+            <div class="form-row">
+                <label for="birthDate">Data urodzenia</label>
+                <input type="date" max="{{today | date:'yyyy-MM-dd'}}" id="birthDate" name="birthDate" formControlName="birthDate">
+            </div>
+            <div class="form-row">
+                <label for="diseases">Choroby/Dolegliwości</label>
+                <div formArrayName="diseases" *ngFor="let disease of diseases.controls; let i = index">
+                    <div class="single-disease">
+                        {{i + 1}}.
+                        <input [formControlName]="i" type="text">
+                        <button class="remove-disease-button" type="button" (click)="removeDisease(i)">X</button>
+                    </div>
+                </div>
+                <button class="add-next-disease-button" type="button" (click)="addNextDisease()">Dodaj chorobę</button>
+            </div>
+            <div class="form-actions">
+                <button type="button">Anuluj</button>
+                <button type="reset">Wyczyść formularz</button>
+                <button type="submit">Dodaj do bazy</button>
+            </div>
+        </form>
+    </mat-dialog-content>
+</div>

@@ -1,0 +1,33 @@
+<div class="management-card">
+    <div class="management-header">
+        <div class="management-title">
+            <h1>Lista posiadanych płyt</h1>
+        </div>
+        <div class="user-management-actions">
+            <a>Dodaj</a>
+            <a [ngClass]="anythingChecked() ? '' : 'disabled-when-none-checked'">Usuń</a>
+            <a (click)="refreshPage()">Odśwież</a>
+        </div>
+    </div>
+    <div class="management-content">
+        <table>
+            <tr class="table-headers">
+                <th><input id="mainCheckbox" (click)="applyToAllCheckboxes($event.target!)" type="checkbox"></th>
+                <th>Zespół</th>
+                <th>Album</th>
+                <th>Rok wydania</th>
+                <th>Gatunek</th>
+                <th colspan="2">Akcje</th>
+            </tr>
+            <tr class="table-content {{i%2 == 0 ? 'even':'odd'}}-row" *ngFor="let cd of cds, let i = index">
+                <td><input type="checkbox" name="single-element-checkbox" (click)="updateMainCheckbox()"></td>
+                <td>{{cd.band}}</td>
+                <td>{{cd.album}}</td>
+                <td>{{cd.year}}</td>
+                <td>{{cd.genre}}</td>
+                <td class="action" (click)="deleteElement(cd.id)">Usuń</td>
+                <td class="action" (click)="editElement(cd.id)">Edytuj</td>
+            </tr>
+        </table>
+    </div>
+</div>
