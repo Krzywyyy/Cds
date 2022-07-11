@@ -1,0 +1,30 @@
+<form [formGroup]="addCdForm" (submit)="onSubmit()" (reset)="onReset()">
+    <table>
+        <tr>
+            <th colspan="2">
+                <h1>Dodaj nową płytę</h1>
+            </th>
+        </tr>
+        <tr>
+            <td>Zespół</td>
+            <td><input type="text" placeholder="np. Lej mi pół" formControlName="band"></td>
+        </tr>
+        <tr>
+            <td>Album</td>
+            <td><input type="text" placeholder="np. Skolioza odbytu" formControlName="album">
+            </td>
+        </tr>
+        <tr>
+            <td>Rok wydania</td>
+            <td><input type="number" placeholder="np. 2021" formControlName="year"></td>
+        </tr>
+        <tr>
+            <td>Gatunek</td>
+            <td><input type="text" placeholder="np. Pop" formControlName="genre"></td>
+        </tr>
+    </table>
+    <div class="form-actions">
+        <button type="reset">Wyczyść formularz</button>
+        <button type="submit">Dodaj do bazy</button>
+    </div>
+</form>

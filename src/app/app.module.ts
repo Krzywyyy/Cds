@@ -3,18 +3,24 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { CdListComponent } from './cd-list/cd-list.component';
-import { AddCdFormComponent } from './cd-list/add-cd-form/add-cd-form.component';
+import { CdListComponent } from './management/cds-management/cd-list/cd-list.component';
+import { CdFormComponent } from './management/cds-management/cd-form/cd-form.component';
+import { MatDialogModule } from '@angular/material/dialog';
+import { ReactiveFormsModule } from '@angular/forms';
+import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
     AppComponent,
     CdListComponent,
-    AddCdFormComponent
+    CdFormComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    MatDialogModule,
+    ReactiveFormsModule,
+    NoopAnimationsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
