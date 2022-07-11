@@ -1,5 +1,5 @@
 export class Cd {
-    id!: number;
+    id!: string;
     band!: string;
     album!: string;
     year!: number;

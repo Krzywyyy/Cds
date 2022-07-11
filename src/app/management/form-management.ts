@@ -23,6 +23,11 @@ export class FormManagement {
         }
     }
 
+    getCheckedCheckboxes(): Array<HTMLInputElement> {
+        return Array.from(this.getAllCheckboxes())
+            .filter(c => c.checked)
+    }
+
     updateMainCheckbox() {
         this.getMainCheckbox().checked = Array.from(this.getAllCheckboxes())
             .every(c => c.checked);

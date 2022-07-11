@@ -4,7 +4,6 @@
             <h1>Lista posiadanych płyt</h1>
         </div>
         <div class="user-management-actions">
-            <!-- <a (click)="formManagement.showForm(formManagement.forms.cdForm)">Dodaj</a> -->
             <a (click)="addElement()">Dodaj</a>
             <a (click)="deleteCheckedElements()" [ngClass]="formManagement.anythingChecked() ? '' : 'disabled-when-none-checked'">Usuń</a>
             <a (click)="refreshElements()">Odśwież</a>
@@ -12,22 +11,23 @@
     </div>
     <div class="management-content">
         <table>
-            <tr class="table-headers">
+            <thead class="table-headers">
                 <th><input id="mainCheckbox" (click)="formManagement.applyToAllCheckboxes($event.target!)" type="checkbox"></th>
                 <th>Zespół</th>
                 <th>Album</th>
                 <th>Rok wydania</th>
                 <th>Gatunek</th>
                 <th colspan="2">Akcje</th>
-            </tr>
+            </thead>
             <tr class="table-content {{i%2 == 0 ? 'even':'odd'}}-row" *ngFor="let cd of cds, let i = index">
                 <td><input type="checkbox" name="single-element-checkbox" (click)="formManagement.updateMainCheckbox()"></td>
+                <td class="hidden-field">{{cd.id}}</td>
                 <td>{{cd.band}}</td>
                 <td>{{cd.album}}</td>
                 <td>{{cd.year}}</td>
                 <td>{{cd.genre}}</td>
                 <td class="action" (click)="editElement(cd)">Edytuj</td>
-                <td class="action" (click)="deleteElement(cd)">Usuń</td>
+                <td class="action" (click)="deleteElement(cd.id)">Usuń</td>
             </tr>
         </table>
     </div>

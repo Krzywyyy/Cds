@@ -22,28 +22,28 @@ export class CdListComponent implements OnInit {
   fetchElements(): Array<Cd> {
     return [
       {
-        id: 0,
+        id: "0",
         band: "Hunter",
         album: "Arachne",
         year: 2015,
         genre: "metal"
       },
       {
-        id: 1,
+        id: "1",
         band: "Nocny Kochanek",
         album: "alkustycznie",
         year: 2021,
         genre: "metal"
       },
       {
-        id: 2,
+        id: "2",
         band: "System of a down",
         album: "Mezmerize",
         year: 2010,
         genre: "metal"
       },
       {
-        id: 3,
+        id: "3",
         band: "Sanah",
         album: "Uczta",
         year: 2022,
@@ -61,7 +61,7 @@ export class CdListComponent implements OnInit {
 
     dialogRef?.afterClosed().subscribe(() => {
       this.cds.push({
-        id: 4,
+        id: "4",
         band: "Behemoth",
         album: "Ov fire and the void",
         year: 2015,
@@ -70,17 +70,24 @@ export class CdListComponent implements OnInit {
     })
   }
 
-  deleteElement(cd: any) {
-    if (confirm("Jesteś pewny/a?")) {
-      this.cds = this.cds.filter(obj => obj !== cd);
-    }
+  editElement(cd: any) {
+    window.alert("Edytuj: " + cd)
   }
 
   deleteCheckedElements() {
-
+    // Array.from((document.getElementsByTagName("tr") as HTMLCollectionOf<HTMLTableRowElement>))
+    //   .filter(row => (row.cells[0].childNodes[0] as HTMLInputElement).checked)
+    //   .map(row => row.cells[1].childNodes[0].nodeValue)
+    //   .forEach(id => this.deleteElement(id));
+    Array.from(document.getElementsByTagName("tr"))
+    .map(row => row.getElementsByTagName("td"))
+    .map(row => (row[0].childNodes[0] as HTMLInputElement).checked)
+    .forEach(r => console.log(r))
   }
 
-  editElement(cd: any) {
-    window.alert("Edytuj: " + cd)
+  deleteElement(id: any) {
+    // if (confirm("Jesteś pewny/a?")) {
+    this.cds = this.cds.filter(obj => obj.id !== id);
+    // }
   }
 }
