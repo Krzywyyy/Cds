@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { Cd } from 'src/app/model/cd';
 import { FormManagement } from '../../form-management';
 
@@ -12,7 +12,8 @@ export class CdListComponent implements OnInit {
   cds: Array<Cd> = new Array();
 
   constructor(
-    public formManagement: FormManagement
+    public formManagement: FormManagement,
+    private cdr: ChangeDetectorRef
   ) { }
 
   ngOnInit(): void {
@@ -75,19 +76,20 @@ export class CdListComponent implements OnInit {
   }
 
   deleteCheckedElements() {
-    // Array.from((document.getElementsByTagName("tr") as HTMLCollectionOf<HTMLTableRowElement>))
-    //   .filter(row => (row.cells[0].childNodes[0] as HTMLInputElement).checked)
-    //   .map(row => row.cells[1].childNodes[0].nodeValue)
-    //   .forEach(id => this.deleteElement(id));
+    if(!confirm("Jesteś pewny/a?")){
+      return;
+    }
     Array.from(document.getElementsByTagName("tr"))
-    .map(row => row.getElementsByTagName("td"))
-    .map(row => (row[0].childNodes[0] as HTMLInputElement).checked)
-    .forEach(r => console.log(r))
+      .map(row => row.getElementsByTagName("td"))
+      .filter(row => (row[0].childNodes[0] as HTMLInputElement).checked)
+      .map(row => row[1].childNodes[0].textContent)
+      .forEach(cdId => this.deleteElement(cdId, true));
+      this.cdr.detectChanges()
   }
 
-  deleteElement(id: any) {
-    // if (confirm("Jesteś pewny/a?")) {
-    this.cds = this.cds.filter(obj => obj.id !== id);
-    // }
+  deleteElement(id: any, auto: boolean) {
+    if (auto || confirm("Jesteś pewny/a?")) {
+      this.cds = this.cds.filter(obj => obj.id !== id);
+    }
   }
 }
