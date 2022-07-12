@@ -8,12 +8,14 @@ import { CdFormComponent } from './management/cds-management/cd-form/cd-form.com
 import { MatDialogModule } from '@angular/material/dialog';
 import { ReactiveFormsModule } from '@angular/forms';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
+import { TopNavbarComponent } from './navigation/top-navbar/top-navbar.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     CdListComponent,
-    CdFormComponent
+    CdFormComponent,
+    TopNavbarComponent
   ],
   imports: [
     BrowserModule,

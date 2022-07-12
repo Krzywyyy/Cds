@@ -1,0 +1,17 @@
+.top-navigation {
+    display: flex;
+    flex-direction: row;
+    flex: 1;
+    background-color: ghostwhite;
+    padding: 10px 40px;
+    align-items: center;
+    height: 100px;
+    border-bottom: 2px solid lightgray;
+}
+
+.top-navigation-title {
+    color: black;
+    font-size: 95px;
+    font-family: "Brush Script MT", "Times New Roman", serif;
+    text-shadow: 4px 4px gray;
+}
