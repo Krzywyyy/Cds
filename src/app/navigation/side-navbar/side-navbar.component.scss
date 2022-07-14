@@ -1,17 +1,22 @@
 .side-navigation {
     display: flex;
     flex-direction: column;
-    flex: 1;
+    height: 100%;
     background-color: whitesmoke;
     border-right: 2px solid lightgray;
 }
 
 .side-navigation-entries {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
     font-size: larger;
-    p {
-        background-color: pink;
-        margin-top: 10px;
-        padding: 5px;
-        border-bottom: 1px solid gray;
+    a {
+        padding: 15px 40px;
+        border-bottom: 2px solid lightgray;
+        &:hover {
+            background-color: lightgray;
+            cursor: pointer;
+        }
     }
 }
