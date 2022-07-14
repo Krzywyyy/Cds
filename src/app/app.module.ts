@@ -9,13 +9,15 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { ReactiveFormsModule } from '@angular/forms';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { TopNavbarComponent } from './navigation/top-navbar/top-navbar.component';
+import { SideNavbarComponent } from './navigation/side-navbar/side-navbar.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     CdListComponent,
     CdFormComponent,
-    TopNavbarComponent
+    TopNavbarComponent,
+    SideNavbarComponent
   ],
   imports: [
     BrowserModule,

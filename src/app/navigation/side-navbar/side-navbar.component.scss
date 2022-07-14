@@ -1,0 +1,17 @@
+.side-navigation {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    background-color: whitesmoke;
+    border-right: 2px solid lightgray;
+}
+
+.side-navigation-entries {
+    font-size: larger;
+    p {
+        background-color: pink;
+        margin-top: 10px;
+        padding: 5px;
+        border-bottom: 1px solid gray;
+    }
+}
