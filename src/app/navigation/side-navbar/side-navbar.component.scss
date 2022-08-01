@@ -14,10 +14,15 @@
     a {
         padding: 15px 40px;
         border-bottom: 2px solid lightgray;
+        text-decoration: none;
+        color: black;
         &:hover {
             background-color: lightgray;
             cursor: pointer;
         }
+    }
+    .active-link {
+        background-color: ghostwhite;
     }
 }
 

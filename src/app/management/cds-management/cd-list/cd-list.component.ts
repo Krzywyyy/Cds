@@ -1,5 +1,6 @@
 import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { Cd } from 'src/app/model/cd';
+import { CdService } from 'src/app/services/cd-service';
 import { FormManagement } from '../../form-management';
 
 @Component({
@@ -13,48 +14,17 @@ export class CdListComponent implements OnInit {
 
   constructor(
     public formManagement: FormManagement,
-    private cdr: ChangeDetectorRef
+    private cdr: ChangeDetectorRef,
+    private cdService: CdService
   ) { }
 
   ngOnInit(): void {
     this.refreshElements();
   }
 
-  fetchElements(): Array<Cd> {
-    return [
-      {
-        id: "0",
-        band: "Hunter",
-        album: "Arachne",
-        year: 2015,
-        genre: "metal"
-      },
-      {
-        id: "1",
-        band: "Nocny Kochanek",
-        album: "alkustycznie",
-        year: 2021,
-        genre: "metal"
-      },
-      {
-        id: "2",
-        band: "System of a down",
-        album: "Mezmerize",
-        year: 2010,
-        genre: "metal"
-      },
-      {
-        id: "3",
-        band: "Sanah",
-        album: "Uczta",
-        year: 2022,
-        genre: "pop"
-      }
-    ]
-  }
-
   refreshElements() {
-    this.cds = this.fetchElements();
+    this.cdService.getAllOwned()
+      .subscribe(data => this.cds = data);
   }
 
   addElement() {
@@ -76,7 +46,7 @@ export class CdListComponent implements OnInit {
   }
 
   deleteCheckedElements() {
-    if(!confirm("Jesteś pewny/a?")){
+    if (!confirm("Jesteś pewny/a?")) {
       return;
     }
     Array.from(document.getElementsByTagName("tr"))
@@ -84,7 +54,7 @@ export class CdListComponent implements OnInit {
       .filter(row => (row[0].childNodes[0] as HTMLInputElement).checked)
       .map(row => row[1].childNodes[0].textContent)
       .forEach(cdId => this.deleteElement(cdId, true));
-      this.cdr.detectChanges()
+    this.cdr.detectChanges()
   }
 
   deleteElement(id: any, auto: boolean) {

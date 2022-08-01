@@ -10,6 +10,8 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { TopNavbarComponent } from './navigation/top-navbar/top-navbar.component';
 import { SideNavbarComponent } from './navigation/side-navbar/side-navbar.component';
+import { CdService } from './services/cd-service';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -24,9 +26,12 @@ import { SideNavbarComponent } from './navigation/side-navbar/side-navbar.compon
     AppRoutingModule,
     MatDialogModule,
     ReactiveFormsModule,
-    NoopAnimationsModule
+    NoopAnimationsModule,
+    HttpClientModule
   ],
-  providers: [],
+  providers: [
+    CdService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
