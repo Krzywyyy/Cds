@@ -5,13 +5,17 @@ import { Cd } from '../model/cd';
 
 @Injectable({
     providedIn: 'root'
-  })
+})
 export class CdService {
     private readonly url = "http://localhost:8080/cds";
 
-    constructor(private httpClient: HttpClient){}
+    constructor(private httpClient: HttpClient) { }
 
     getAllOwned(): Observable<Array<Cd>> {
         return this.httpClient.get<Array<Cd>>(this.url + "/owned");
+    }
+
+    delete(id: number): void {
+        this.httpClient.delete(this.url + "/" + id);
     }
 }
