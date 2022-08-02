@@ -10,25 +10,55 @@
         </div>
     </div>
     <div class="management-content">
-        <table>
-            <thead class="table-headers">
-                <th><input id="mainCheckbox" (click)="formManagement.applyToAllCheckboxes($event.target!)" type="checkbox"></th>
-                <th>Zespół</th>
-                <th>Album</th>
-                <th>Rok wydania</th>
-                <th>Gatunek</th>
-                <th colspan="2">Akcje</th>
-            </thead>
-            <tr class="table-content {{i%2 == 0 ? 'even':'odd'}}-row" *ngFor="let cd of cds, let i = index">
-                <td><input type="checkbox" name="single-element-checkbox" (click)="formManagement.updateMainCheckbox()"></td>
-                <td class="hidden-field">{{cd.id}}</td>
-                <td>{{cd.band}}</td>
-                <td>{{cd.album}}</td>
-                <td>{{cd.year}}</td>
-                <td>{{cd.genre}}</td>
-                <td class="action" (click)="editElement(cd)">Edytuj</td>
-                <td class="action" (click)="deleteElement(cd.id, false)">Usuń</td>
-            </tr>
-        </table>
+        <div class="filters">
+            <table>
+                <tr>
+                    <td colspan="7">
+                        <p>Filtry</p>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Zespół</td>
+                    <td>Album</td>
+                    <td colspan="3">Rok wydania</td>
+                    <td>Gatunek</td>
+                </tr>
+                <tr>
+                    <td><input type="text" placeholder="Zespół" size="10"></td>
+                    <td><input type="text" placeholder="Album" size="10"></td>
+                    <td><input type="text" placeholder="Od" size="3"></td>
+                    <td>-</td>
+                    <td><input type="text" placeholder="Do" size="3"></td>
+                    <td><input type="text" placeholder="Gatunek" size="10"></td>
+                    <td><button>Filtruj</button></td>
+                </tr>
+            </table>
+        </div>
+        <div class="content-table">
+            <table>
+                <thead class="table-headers">
+                    <th><input id="mainCheckbox" (click)="formManagement.applyToAllCheckboxes($event.target!)" type="checkbox"></th>
+                    <th>Zespół</th>
+                    <th>Album</th>
+                    <th>Rok wydania</th>
+                    <th>Gatunek</th>
+                    <th colspan="2">Akcje</th>
+                </thead>
+                <tr class="{{i%2 == 0 ? 'even':'odd'}}-row" *ngFor="let cd of cds, let i = index">
+                    <td><input type="checkbox" name="single-element-checkbox" (click)="formManagement.updateMainCheckbox()"></td>
+                    <td class="hidden-field">{{cd.id}}</td>
+                    <td>{{cd.band}}</td>
+                    <td>{{cd.album}}</td>
+                    <td>{{cd.year}}</td>
+                    <td>{{cd.genre}}</td>
+                    <td class="action" (click)="editElement(cd)">Edytuj</td>
+                    <td class="action" (click)="deleteElement(cd.id, false)">Usuń</td>
+                </tr>
+                <tr *ngIf="cds.length === 0">
+                    <td colspan="6" class="no-cds-info">
+                        Brak płyt
+                    </td>
+                </tr>
+            </table>
+        </div>
     </div>
-</div>

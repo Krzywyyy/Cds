@@ -11,7 +11,6 @@
     justify-content: space-between;
     background-color: ghostwhite;
     border-bottom: 2px solid lightgray;
-    margin-bottom: 30px;
 }
 
 .management-title {
@@ -63,12 +62,35 @@
     }
 }
 
-.management-content table,
-.management-content th,
-.management-content td {
-    border: 1px solid black;
-    border-collapse: collapse;
-    padding: 10px 20px;
+.filters {
+    text-align: start;
+    padding: 20px;
+    margin: 30px;
+    border-bottom: 1px solid lightgray;
+    p {
+        font-size: x-large;
+        font-weight: bold;
+    }
+    td {
+        padding: 2px 5px;
+        input {
+            padding: 3px 5px 3px 5px;
+        }
+        button {
+            padding: 5px 15px;
+            cursor: pointer;
+        }
+    }
+}
+
+.content-table {
+    table,
+    th,
+    td {
+        border: 1px solid black;
+        border-collapse: collapse;
+        padding: 10px 20px;
+    }
 }
 
 .action {
@@ -77,4 +99,10 @@
     &:hover {
         background-color: lightgray;
     }
+}
+
+.no-cds-info {
+    color: gray;
+    background-color: whitesmoke;
+    cursor: default;
 }
