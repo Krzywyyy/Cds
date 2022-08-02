@@ -7,5 +7,10 @@ import { CdManagement } from './cd-management';
   styleUrls: ['../list-styles.scss']
 })
 export class OwnedCdsComponent extends CdManagement {
-  title = "Lista posiadanych płyt"
+  title = "Lista posiadanych płyt";
+
+  refreshElements() {
+    this.cdService.getAllOwned()
+      .subscribe(data => this.cds = data);
+  }
 }

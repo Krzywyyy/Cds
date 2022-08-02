@@ -8,4 +8,9 @@ import { CdManagement } from './cd-management';
 })
 export class WantedCdsComponent  extends CdManagement {
   title = "Lista pożądanych płyt"
+
+  refreshElements() {
+    this.cdService.getAllWanted()
+      .subscribe(data => this.cds = data);
+  }
 }

@@ -9,7 +9,7 @@ import { FormManagement } from "../form-management";
     template: ''
 })
 export abstract class CdManagement implements OnInit {
-    
+
     cds: Array<Cd> = new Array();
 
     cdFilters = new CdListFilters();
@@ -17,8 +17,8 @@ export abstract class CdManagement implements OnInit {
 
     constructor(
         public formManagement: FormManagement,
-        private cdr: ChangeDetectorRef,
-        private cdService: CdService
+        public cdService: CdService,
+        private cdr: ChangeDetectorRef
     ) { }
 
     ngOnInit(): void {
@@ -61,10 +61,12 @@ export abstract class CdManagement implements OnInit {
         return this.cdSorts.ascending === "ascending" ? cdList : cdList.reverse();
     }
 
-    refreshElements() {
-        this.cdService.getAllOwned()
-            .subscribe(data => this.cds = data);
-    }
+    abstract refreshElements(): void;
+
+    // refreshElements() {
+    //     this.cdService.getAllOwned()
+    //         .subscribe(data => this.cds = data);
+    // }
 
     addElement() {
         let dialogRef = this.formManagement.showForm(this.formManagement.forms.cdForm);

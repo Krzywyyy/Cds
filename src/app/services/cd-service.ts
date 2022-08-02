@@ -15,6 +15,10 @@ export class CdService {
         return this.httpClient.get<Array<Cd>>(this.url + "/owned");
     }
 
+    getAllWanted(): Observable<Array<Cd>> {
+        return this.httpClient.get<Array<Cd>>(this.url + "/wanted");
+    }
+
     delete(id: number): void {
         this.httpClient.delete(this.url + "/" + id);
     }
