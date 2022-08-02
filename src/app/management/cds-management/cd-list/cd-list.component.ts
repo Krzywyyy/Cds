@@ -36,7 +36,6 @@ export class CdListComponent implements OnInit {
     this.cdFilters = new CdListFilters();
   }
 
-
   sorted(cdList: Array<Cd>): Array<Cd> {
     var list: Array<Cd> = [];
 
