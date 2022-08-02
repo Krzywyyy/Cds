@@ -1,12 +1,13 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { EmptyComponent } from 'src/empty/empty.component';
-import { CdListComponent } from './management/cds-management/cd-list/cd-list.component';
+import { OwnedCdsComponent } from './management/cds-management/owned-cds.component';
+import { WantedCdsComponent } from './management/cds-management/wanted-cds.component';
 
 const routes: Routes = [
-  {path:'', component: CdListComponent},
-  {path:'owned', component: CdListComponent},
-  {path:'wanted', component: EmptyComponent},
+  {path:'', component: EmptyComponent},
+  {path:'owned', component: OwnedCdsComponent},
+  {path:'wanted', component: WantedCdsComponent},
   {path:'statistics', component: EmptyComponent}
 ];
 
