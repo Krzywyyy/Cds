@@ -38,8 +38,8 @@ export class CdListComponent implements OnInit {
 
 
   sorted(cdList: Array<Cd>): Array<Cd> {
-    let asc = this.cdSorts.ascending === "ascending";
     var list: Array<Cd> = [];
+
     switch (this.cdSorts.column) {
       case 'band':
         list = cdList.sort((cd1, cd2) => cd1.band.localeCompare(cd2.band));
@@ -57,7 +57,7 @@ export class CdListComponent implements OnInit {
         list = cdList;
         break;
     }
-    return asc ? cdList : cdList.reverse();
+    return this.cdSorts.ascending === "ascending" ? cdList : cdList.reverse();
   }
 
   ngOnInit(): void {
