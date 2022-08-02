@@ -62,7 +62,7 @@
     }
 }
 
-.filters {
+.options {
     text-align: start;
     padding: 20px;
     margin: 30px;
@@ -81,6 +81,7 @@
         }
     }
     table {
+        padding-bottom: 10px;
         border-bottom: 1px solid lightgray;
     }
 }
@@ -107,9 +108,4 @@
     color: gray;
     background-color: whitesmoke;
     cursor: default;
-}
-
-.righttt {
-    display: flex;
-    justify-content: flex-end;
 }
