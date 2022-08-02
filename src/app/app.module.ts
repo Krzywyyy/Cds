@@ -6,7 +6,7 @@ import { AppComponent } from './app.component';
 import { CdListComponent } from './management/cds-management/cd-list/cd-list.component';
 import { CdFormComponent } from './management/cds-management/cd-form/cd-form.component';
 import { MatDialogModule } from '@angular/material/dialog';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, NgControl, ReactiveFormsModule } from '@angular/forms';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { TopNavbarComponent } from './navigation/top-navbar/top-navbar.component';
 import { SideNavbarComponent } from './navigation/side-navbar/side-navbar.component';
@@ -27,7 +27,8 @@ import { HttpClientModule } from '@angular/common/http';
     MatDialogModule,
     ReactiveFormsModule,
     NoopAnimationsModule,
-    HttpClientModule
+    HttpClientModule,
+    FormsModule
   ],
   providers: [
     CdService

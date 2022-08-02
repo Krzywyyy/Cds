@@ -13,7 +13,7 @@
         <div class="options">
             <table>
                 <tr>
-                    <td colspan="7">
+                    <td colspan="8">
                         <span>Filtry</span>
                     </td>
                 </tr>
@@ -25,17 +25,18 @@
                         <td>Gatunek</td>
                     </tr>
                     <tr>
-                        <td><input type="text" placeholder="Zespół" size="10"></td>
-                        <td><input type="text" placeholder="Album" size="10"></td>
-                        <td><input type="text" placeholder="Od" size="1" [maxLength]="4"></td>
+                        <td><input type="text" placeholder="Zespół" size="10" [(ngModel)]="cdFilters.band"></td>
+                        <td><input type="text" placeholder="Album" size="10" [(ngModel)]="cdFilters.album"></td>
+                        <td><input type="text" placeholder="Od" size="1" [maxLength]="4" [(ngModel)]="cdFilters.yearFrom"></td>
                         <td>-</td>
-                        <td><input type="text" placeholder="Do" size="1" [maxLength]="4"></td>
-                        <td><input type="text" placeholder="Gatunek" size="10"></td>
-                        <td><button>Filtruj</button></td>
+                        <td><input type="text" placeholder="Do" size="1" [maxLength]="4" [(ngModel)]="cdFilters.yearTo"></td>
+                        <td><input type="text" placeholder="Gatunek" size="10" [(ngModel)]="cdFilters.genre"></td>
+                        <td><button (click)="filter()">Filtruj</button></td>
+                        <td><button (click)="filter()">Wyczyść</button></td>
                     </tr>
                 </div>
                 <tr>
-                    <td colspan="7">
+                    <td colspan="8">
                         <span>Sortowanie</span>
                     </td>
                 </tr>
@@ -55,7 +56,7 @@
                         <option>Malejąco</option>
                     </select>
                         </td>
-                        <td colspan="5"><button>Sortuj</button></td>
+                        <td colspan="6"><button (click)="sort()">Sortuj</button></td>
                     </tr>
                 </div>
             </table>
@@ -70,7 +71,7 @@
                     <th>Gatunek</th>
                     <th colspan="2">Akcje</th>
                 </thead>
-                <tr class="{{i%2 == 0 ? 'even':'odd'}}-row" *ngFor="let cd of cds, let i = index">
+                <tr class="{{i%2 == 0 ? 'even':'odd'}}-row" *ngFor="let cd of getCdsToDisplay(), let i = index">
                     <td><input type="checkbox" name="single-element-checkbox" (click)="formManagement.updateMainCheckbox()"></td>
                     <td class="hidden-field">{{cd.id}}</td>
                     <td>{{cd.band}}</td>
@@ -80,9 +81,9 @@
                     <td class="action" (click)="editElement(cd)">Edytuj</td>
                     <td class="action" (click)="deleteElement(cd.id, false)">Usuń</td>
                 </tr>
-                <tr *ngIf="cds.length === 0">
+                <tr *ngIf="getCdsToDisplay().length === 0">
                     <td colspan="6" class="no-cds-info">
-                        Brak płyt
+                        {{getCdsToDisplay().length === cds.length ? "Brak płyt" : "Brak płyt spełniających kryteria"}}
                     </td>
                 </tr>
             </table>
