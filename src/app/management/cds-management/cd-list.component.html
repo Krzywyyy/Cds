@@ -27,9 +27,9 @@
                     <tr>
                         <td><input type="text" placeholder="Zespół" size="10" [(ngModel)]="cdFilters.band"></td>
                         <td><input type="text" placeholder="Album" size="10" [(ngModel)]="cdFilters.album"></td>
-                        <td><input type="text" placeholder="Od" size="1" [maxLength]="4" [(ngModel)]="cdFilters.yearFrom"></td>
+                        <td><input type="text" placeholder="Od" size="2" [maxLength]="4" [(ngModel)]="cdFilters.yearFrom"></td>
                         <td>-</td>
-                        <td><input type="text" placeholder="Do" size="1" [maxLength]="4" [(ngModel)]="cdFilters.yearTo"></td>
+                        <td><input type="text" placeholder="Do" size="2" [maxLength]="4" [(ngModel)]="cdFilters.yearTo"></td>
                         <td><input type="text" placeholder="Gatunek" size="10" [(ngModel)]="cdFilters.genre"></td>
                         <td><button (click)="resetFilters()">Wyczyść</button></td>
                     </tr>
