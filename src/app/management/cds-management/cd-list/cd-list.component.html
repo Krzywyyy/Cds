@@ -14,46 +14,50 @@
             <table>
                 <tr>
                     <td colspan="7">
-                        <p>Filtry</p>
+                        <span>Filtry</span>
                     </td>
                 </tr>
-                <tr>
-                    <td>Zespół</td>
-                    <td>Album</td>
-                    <td colspan="3">Rok wydania</td>
-                    <td>Gatunek</td>
-                </tr>
-                <tr>
-                    <td><input type="text" placeholder="Zespół" size="10"></td>
-                    <td><input type="text" placeholder="Album" size="10"></td>
-                    <td><input type="text" placeholder="Od" size="3"></td>
-                    <td>-</td>
-                    <td><input type="text" placeholder="Do" size="3"></td>
-                    <td><input type="text" placeholder="Gatunek" size="10"></td>
-                    <td><button>Filtruj</button></td>
-                </tr>
+                <div>
+                    <tr>
+                        <td>Zespół</td>
+                        <td>Album</td>
+                        <td colspan="3">Rok wydania</td>
+                        <td>Gatunek</td>
+                    </tr>
+                    <tr>
+                        <td><input type="text" placeholder="Zespół" size="10"></td>
+                        <td><input type="text" placeholder="Album" size="10"></td>
+                        <td><input type="text" placeholder="Od" size="1" [maxLength]="4"></td>
+                        <td>-</td>
+                        <td><input type="text" placeholder="Do" size="1" [maxLength]="4"></td>
+                        <td><input type="text" placeholder="Gatunek" size="10"></td>
+                        <td><button>Filtruj</button></td>
+                    </tr>
+                </div>
                 <tr>
                     <td colspan="7">
-                        <p>Sortowanie</p>
+                        <span>Sortowanie</span>
                     </td>
                 </tr>
-                <tr>
-                    <td>
-                        <select>
+                <div>
+                    <tr>
+                        <td>
+                            <select>
                         <option>Zespół</option>
                         <option>Album</option>
                         <option>Rok wydania</option>
                         <option>Gatunek</option>
                     </select>
-                    </td>
-                    <td>
-                        <select>
+                        </td>
+                        <td>
+                            <select>
                         <option>Rosnąco</option>
                         <option>Malejąco</option>
                     </select>
-                    </td>
-                    <td colspan="5"><button>Sortuj</button></td>
-                </tr>
+                        </td>
+                        <td colspan="5"><button>Sortuj</button></td>
+                    </tr>
+                </div>
             </table>
         </div>
         <div class="content-table">
