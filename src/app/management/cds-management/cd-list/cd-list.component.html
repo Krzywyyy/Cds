@@ -31,8 +31,7 @@
                         <td>-</td>
                         <td><input type="text" placeholder="Do" size="1" [maxLength]="4" [(ngModel)]="cdFilters.yearTo"></td>
                         <td><input type="text" placeholder="Gatunek" size="10" [(ngModel)]="cdFilters.genre"></td>
-                        <td><button (click)="filter()">Filtruj</button></td>
-                        <td><button (click)="filter()">Wyczyść</button></td>
+                        <td><button (click)="resetFilters()">Wyczyść</button></td>
                     </tr>
                 </div>
                 <tr>
@@ -43,20 +42,19 @@
                 <div>
                     <tr>
                         <td>
-                            <select>
-                        <option>Zespół</option>
-                        <option>Album</option>
-                        <option>Rok wydania</option>
-                        <option>Gatunek</option>
+                            <select [(ngModel)]="cdSorts.column">
+                        <option value="band">Zespół</option>
+                        <option value="album">Album</option>
+                        <option value="year">Rok wydania</option>
+                        <option value="genre">Gatunek</option>
                     </select>
                         </td>
                         <td>
-                            <select>
-                        <option>Rosnąco</option>
-                        <option>Malejąco</option>
+                            <select [(ngModel)]="cdSorts.ascending">
+                        <option value="ascending">Rosnąco</option>
+                        <option value="descending">Malejąco</option>
                     </select>
                         </td>
-                        <td colspan="6"><button (click)="sort()">Sortuj</button></td>
                     </tr>
                 </div>
             </table>
