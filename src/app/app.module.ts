@@ -13,6 +13,8 @@ import { CdService } from './services/cd-service';
 import { HttpClientModule } from '@angular/common/http';
 import { OwnedCdsComponent } from './management/cds-management/owned-cds.component';
 import { WantedCdsComponent } from './management/cds-management/wanted-cds.component';
+import { OwnedBooksComponent } from './management/books-management/owned-books.component';
+import { WantedBooksComponent } from './management/books-management/wanted-books.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +23,9 @@ import { WantedCdsComponent } from './management/cds-management/wanted-cds.compo
     TopNavbarComponent,
     SideNavbarComponent,
     OwnedCdsComponent,
-    WantedCdsComponent
+    WantedCdsComponent,
+    OwnedBooksComponent,
+    WantedBooksComponent
   ],
   imports: [
     BrowserModule,

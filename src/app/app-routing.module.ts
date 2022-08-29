@@ -5,10 +5,11 @@ import { OwnedCdsComponent } from './management/cds-management/owned-cds.compone
 import { WantedCdsComponent } from './management/cds-management/wanted-cds.component';
 
 const routes: Routes = [
-  {path:'', component: EmptyComponent},
-  {path:'owned', component: OwnedCdsComponent},
-  {path:'wanted', component: WantedCdsComponent},
-  {path:'statistics', component: EmptyComponent}
+  {path:'cds/owned', component: OwnedCdsComponent},
+  {path:'cds/wanted', component: WantedCdsComponent},
+  {path:'books/owned', component: WantedCdsComponent},
+  {path:'books/wanted', component: WantedCdsComponent},
+  {path: '**', redirectTo: 'cds/owned', pathMatch: 'full'}
 ];
 
 @NgModule({
