@@ -63,11 +63,6 @@ export abstract class CdManagement implements OnInit {
 
     abstract refreshElements(): void;
 
-    // refreshElements() {
-    //     this.cdService.getAllOwned()
-    //         .subscribe(data => this.cds = data);
-    // }
-
     addElement() {
         let dialogRef = this.formManagement.showForm(this.formManagement.forms.cdForm);
 
@@ -100,7 +95,8 @@ export abstract class CdManagement implements OnInit {
 
     deleteElement(id: any, auto: boolean) {
         if (auto || confirm("Jesteś pewny/a?")) {
-            this.cds = this.cds.filter(obj => obj.id !== id);
+            this.cdService.delete(id);
+            // this.refreshElements();
         }
     }
 }

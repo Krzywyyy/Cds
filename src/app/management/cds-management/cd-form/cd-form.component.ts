@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
+import { CdService } from 'src/app/services/cd-service';
 
 @Component({
   selector: 'app-cd-form',
@@ -8,8 +9,6 @@ import { FormControl, FormGroup } from '@angular/forms';
 })
 export class CdFormComponent implements OnInit {
 
-  constructor() { }
-
   addCdForm = new FormGroup({
     band: new FormControl(),
     album: new FormControl(),
@@ -17,14 +16,12 @@ export class CdFormComponent implements OnInit {
     genre: new FormControl()
   })
 
-  ngOnInit(): void {
-  } 
+  constructor(private cdService: CdService) { }
 
-  onSubmit(): void {
-    console.log(this.addCdForm)
+  ngOnInit(): void {
   }
 
-  onReset(): void {
-    this.addCdForm.reset(this.addCdForm.value);
+  onSubmit(): void {
+    this.cdService.add(this.addCdForm.value);
   }
 }

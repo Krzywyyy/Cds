@@ -7,7 +7,7 @@ import { Cd } from '../model/cd';
     providedIn: 'root'
 })
 export class CdService {
-    private readonly url = "http://localhost:8080/cds";
+    private readonly url = "https://cd-collection-server.herokuapp.com/cds";
 
     constructor(private httpClient: HttpClient) { }
 
@@ -21,5 +21,9 @@ export class CdService {
 
     delete(id: number): void {
         this.httpClient.delete(this.url + "/" + id);
+    }
+
+    add(cd: any): void {
+        this.httpClient.post(this.url, cd);
     }
 }
