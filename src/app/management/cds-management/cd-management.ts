@@ -61,7 +61,8 @@ export abstract class CdManagement implements OnInit {
     }
 
     addElement() {
-        this.formManagement.showForm(this.formManagement.forms.cdForm);
+        this.formManagement.showForm(this.formManagement.forms.cdForm)?.afterClosed()
+            .subscribe(() => this.refreshElements());
     }
 
     editElement(cd: any) {
@@ -96,7 +97,7 @@ export abstract class CdManagement implements OnInit {
     deleteElement(id: any, auto: boolean) {
         if (auto || confirm("Jesteś pewny/a?")) {
             this.cdService.delete(id);
-            // this.refreshElements();
+            this.refreshElements();
         }
     }
 }

@@ -13,7 +13,8 @@ export class CdFormComponent implements OnInit {
     band: new FormControl(),
     album: new FormControl(),
     year: new FormControl(),
-    genre: new FormControl()
+    genre: new FormControl(),
+    owned: new FormControl()
   })
 
   constructor(private cdService: CdService) { }
@@ -22,6 +23,8 @@ export class CdFormComponent implements OnInit {
   }
 
   onSubmit(): void {
+    this.addCdForm.value.owned = this.addCdForm.value.owned == "owned" ? true : false;
     this.cdService.add(this.addCdForm.value);
+    document.getElementById("dirty-close-button")?.click();
   }
 }

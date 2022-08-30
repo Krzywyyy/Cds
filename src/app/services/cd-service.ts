@@ -20,7 +20,7 @@ export class CdService {
     }
 
     delete(id: number): void {
-        this.httpClient.delete(this.url + "/" + id);
+        this.httpClient.delete(this.url + "/" + id).subscribe();
     }
 
     add(cd: any): void {

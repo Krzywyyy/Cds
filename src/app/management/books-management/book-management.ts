@@ -58,7 +58,8 @@ export abstract class BookManagement implements OnInit {
   abstract refreshElements(): void;
 
   addElement() {
-    this.formManagement.showForm(this.formManagement.forms.bookForm);
+    this.formManagement.showForm(this.formManagement.forms.bookForm)?.afterClosed()
+      .subscribe(() => this.refreshElements());
   }
 
   editElement(book: any) {
@@ -79,7 +80,7 @@ export abstract class BookManagement implements OnInit {
   deleteElement(id: any, auto: boolean) {
     if (auto || confirm("Jesteś pewny/a?")) {
       this.bookService.delete(id);
-      // this.refreshElements();
+      this.refreshElements();
     }
   }
 }

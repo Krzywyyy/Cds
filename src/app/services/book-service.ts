@@ -20,10 +20,10 @@ export class BookService {
     }
 
     delete(id: number): void {
-        this.httpClient.delete(this.url + "/" + id);
+        this.httpClient.delete(this.url + "/" + id).subscribe();
     }
 
     add(book: any): void {
-        this.httpClient.post(this.url, book);
+        this.httpClient.post(this.url, book).subscribe();
     }
 }

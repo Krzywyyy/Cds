@@ -22,9 +22,17 @@
             <td>Gatunek</td>
             <td><input type="text" placeholder="np. Pop" formControlName="genre"></td>
         </tr>
+        <tr>
+            <td>Status</td>
+            <td><select formControlName="owned">
+                <option value="owned">Posiadana</option>
+                <option value="wanted">Pożądana</option>
+            </select></td>
+        </tr>
     </table>
     <div class="form-actions">
         <button type="reset">Wyczyść formularz</button>
         <button type="submit">Dodaj</button>
+        <button mat-dialog-close hidden id="dirty-close-button"></button>
     </div>
 </form>

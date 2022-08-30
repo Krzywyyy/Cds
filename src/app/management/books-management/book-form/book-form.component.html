@@ -18,9 +18,17 @@
             <td>Rok wydania</td>
             <td><input type="number" placeholder="np. 2021" formControlName="year"></td>
         </tr>
+        <tr>
+            <td>Status</td>
+            <td><select formControlName="owned">
+                <option value="owned">Posiadana</option>
+                <option value="wanted">Pożądana</option>
+            </select></td>
+        </tr>
     </table>
     <div class="form-actions">
         <button type="reset">Wyczyść formularz</button>
         <button type="submit">Dodaj</button>
+        <button mat-dialog-close hidden id="dirty-close-button"></button>
     </div>
 </form>
