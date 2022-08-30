@@ -5,7 +5,7 @@ import { CdService } from 'src/app/services/cd-service';
 @Component({
   selector: 'app-cd-form',
   templateUrl: './cd-form.component.html',
-  styleUrls: ['./cd-form.component.scss', '../../form-styles.scss']
+  styleUrls: ['../../form-styles.scss']
 })
 export class CdFormComponent implements OnInit {
 

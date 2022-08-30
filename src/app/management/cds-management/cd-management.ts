@@ -1,7 +1,7 @@
-import { ChangeDetectorRef, Component, OnInit } from "@angular/core";
-import { Cd } from "src/app/model/cd";
-import { CdListFilters } from "src/app/model/cd-list-filters";
-import { CdListSorts } from "src/app/model/cd-list-sorts";
+import { Component, OnInit } from "@angular/core";
+import { Cd } from "src/app/model/cds/cd";
+import { CdListFilters } from "src/app/model/cds/cd-list-filters";
+import { CdListSorts } from "src/app/model/cds/cd-list-sorts";
 import { CdService } from "src/app/services/cd-service";
 import { FormManagement } from "../form-management";
 
@@ -17,8 +17,7 @@ export abstract class CdManagement implements OnInit {
 
     constructor(
         public formManagement: FormManagement,
-        public cdService: CdService,
-        private cdr: ChangeDetectorRef
+        public cdService: CdService
     ) { }
 
     ngOnInit(): void {
@@ -64,17 +63,7 @@ export abstract class CdManagement implements OnInit {
     abstract refreshElements(): void;
 
     addElement() {
-        let dialogRef = this.formManagement.showForm(this.formManagement.forms.cdForm);
-
-        dialogRef?.afterClosed().subscribe(() => {
-            this.cds.push({
-                id: 6,
-                band: "Behemoth",
-                album: "Ov fire and the void",
-                year: 2015,
-                genre: "black metal"
-            });
-        })
+        this.formManagement.showForm(this.formManagement.forms.cdForm);
     }
 
     editElement(cd: any) {
@@ -90,7 +79,6 @@ export abstract class CdManagement implements OnInit {
             .filter(row => (row[0].childNodes[0] as HTMLInputElement).checked)
             .map(row => row[1].childNodes[0].textContent)
             .forEach(cdId => this.deleteElement(cdId, true));
-        this.cdr.detectChanges()
     }
 
     deleteElement(id: any, auto: boolean) {

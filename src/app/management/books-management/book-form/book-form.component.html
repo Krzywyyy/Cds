@@ -1,0 +1,26 @@
+<form [formGroup]="addBookForm" (submit)="onSubmit()">
+    <table>
+        <tr>
+            <th colspan="2">
+                <h1>Dodaj nową książkę</h1>
+            </th>
+        </tr>
+        <tr>
+            <td>Autor</td>
+            <td><input type="text" placeholder="np. J.K. Rowling" formControlName="author"></td>
+        </tr>
+        <tr>
+            <td>Tytuł</td>
+            <td><input type="text" placeholder="np. Harry Potter" formControlName="title">
+            </td>
+        </tr>
+        <tr>
+            <td>Rok wydania</td>
+            <td><input type="number" placeholder="np. 2021" formControlName="year"></td>
+        </tr>
+    </table>
+    <div class="form-actions">
+        <button type="reset">Wyczyść formularz</button>
+        <button type="submit">Dodaj</button>
+    </div>
+</form>

@@ -1,15 +1,16 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
+import { BookManagement } from './book-management';
 
 @Component({
   selector: 'app-wanted-books',
   templateUrl: './book-list.component.html',
   styleUrls: ['../list-styles.scss']
 })
-export class WantedBooksComponent implements OnInit {
+export class WantedBooksComponent extends BookManagement {
+  title = "Lista pożądanych książek";
 
-  constructor() { }
-
-  ngOnInit(): void {
+  refreshElements() {
+    this.bookService.getAllOwned()
+      .subscribe(data => this.books = data);
   }
-
 }

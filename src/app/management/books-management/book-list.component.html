@@ -1,4 +1,3 @@
-<p>owned-books works!</p>
 <div class="management-card">
     <div class="management-header">
         <div class="management-title">
@@ -20,18 +19,16 @@
                 </tr>
                 <div>
                     <tr>
-                        <td>Zespół</td>
-                        <td>Album</td>
+                        <td>Autor</td>
+                        <td>Tytuł</td>
                         <td colspan="3">Rok wydania</td>
-                        <td>Gatunek</td>
                     </tr>
                     <tr>
-                        <td><input type="text" placeholder="Zespół" size="10" [(ngModel)]="cdFilters.band"></td>
-                        <td><input type="text" placeholder="Album" size="10" [(ngModel)]="cdFilters.album"></td>
-                        <td><input type="text" placeholder="Od" size="2" [maxLength]="4" [(ngModel)]="cdFilters.yearFrom"></td>
+                        <td><input type="text" placeholder="Autor" size="10" [(ngModel)]="bookFilters.author"></td>
+                        <td><input type="text" placeholder="Tytuł" size="10" [(ngModel)]="bookFilters.title"></td>
+                        <td><input type="text" placeholder="Od" size="2" [maxLength]="4" [(ngModel)]="bookFilters.yearFrom"></td>
                         <td>-</td>
-                        <td><input type="text" placeholder="Do" size="2" [maxLength]="4" [(ngModel)]="cdFilters.yearTo"></td>
-                        <td><input type="text" placeholder="Gatunek" size="10" [(ngModel)]="cdFilters.genre"></td>
+                        <td><input type="text" placeholder="Do" size="2" [maxLength]="4" [(ngModel)]="bookFilters.yearTo"></td>
                         <td><button (click)="resetFilters()">Wyczyść</button></td>
                     </tr>
                 </div>
@@ -43,15 +40,14 @@
                 <div>
                     <tr>
                         <td>
-                            <select [(ngModel)]="cdSorts.column">
-                        <option value="band">Zespół</option>
-                        <option value="album">Album</option>
+                            <select [(ngModel)]="bookSorts.column">
+                        <option value="author">Autor</option>
+                        <option value="title">Tytuł</option>
                         <option value="year">Rok wydania</option>
-                        <option value="genre">Gatunek</option>
                     </select>
                         </td>
                         <td>
-                            <select [(ngModel)]="cdSorts.ascending">
+                            <select [(ngModel)]="bookSorts.ascending">
                         <option value="ascending">Rosnąco</option>
                         <option value="descending">Malejąco</option>
                     </select>
@@ -69,19 +65,18 @@
                     <th>Rok wydania</th>
                     <th colspan="2">Akcje</th>
                 </thead>
-                <tr class="{{i%2 == 0 ? 'even':'odd'}}-row" *ngFor="let cd of getCdsToDisplay(), let i = index">
+                <tr class="{{i%2 == 0 ? 'even':'odd'}}-row" *ngFor="let book of getBooksToDisplay(), let i = index">
                     <td><input type="checkbox" name="single-element-checkbox" (click)="formManagement.updateMainCheckbox()"></td>
-                    <td class="hidden-field">{{cd.id}}</td>
-                    <td>{{cd.band}}</td>
-                    <td>{{cd.album}}</td>
-                    <td>{{cd.year}}</td>
-                    <td>{{cd.genre}}</td>
-                    <td class="action" (click)="editElement(cd)">Edytuj</td>
-                    <td class="action" (click)="deleteElement(cd.id, false)">Usuń</td>
+                    <td class="hidden-field">{{book.id}}</td>
+                    <td>{{book.author}}</td>
+                    <td>{{book.title}}</td>
+                    <td>{{book.year}}</td>
+                    <td class="action" (click)="editElement(book)">Edytuj</td>
+                    <td class="action" (click)="deleteElement(book.id, false)">Usuń</td>
                 </tr>
-                <tr *ngIf="getCdsToDisplay().length === 0">
+                <tr *ngIf="getBooksToDisplay().length === 0">
                     <td colspan="6" class="no-cds-info">
-                        {{getCdsToDisplay().length === cds.length ? "Brak płyt" : "Brak płyt spełniających kryteria"}}
+                        {{getBooksToDisplay().length === books.length ? "Brak książek" : "Brak książek spełniających kryteria"}}
                     </td>
                 </tr>
             </table>

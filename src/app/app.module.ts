@@ -10,11 +10,13 @@ import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { TopNavbarComponent } from './navigation/top-navbar/top-navbar.component';
 import { SideNavbarComponent } from './navigation/side-navbar/side-navbar.component';
 import { CdService } from './services/cd-service';
+import { BookService } from './services/book-service';
 import { HttpClientModule } from '@angular/common/http';
 import { OwnedCdsComponent } from './management/cds-management/owned-cds.component';
 import { WantedCdsComponent } from './management/cds-management/wanted-cds.component';
 import { OwnedBooksComponent } from './management/books-management/owned-books.component';
 import { WantedBooksComponent } from './management/books-management/wanted-books.component';
+import { BookFormComponent } from './management/books-management/book-form/book-form.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +27,8 @@ import { WantedBooksComponent } from './management/books-management/wanted-books
     OwnedCdsComponent,
     WantedCdsComponent,
     OwnedBooksComponent,
-    WantedBooksComponent
+    WantedBooksComponent,
+    BookFormComponent,
   ],
   imports: [
     BrowserModule,
@@ -37,7 +40,8 @@ import { WantedBooksComponent } from './management/books-management/wanted-books
     FormsModule
   ],
   providers: [
-    CdService
+    CdService,
+    BookService
   ],
   bootstrap: [AppComponent]
 })
