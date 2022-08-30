@@ -7,6 +7,8 @@
             <a (click)="addElement()">Dodaj</a>
             <a (click)="deleteCheckedElements()" [ngClass]="formManagement.anythingChecked() ? '' : 'disabled-when-none-checked'">Usuń</a>
             <a (click)="refreshElements()">Odśwież</a>
+            <a (click)="uploadFileButton()">Wgraj plik</a>
+            <input id="uploadFileInput" type="file" (change)="uploadFile($event)" hidden>
         </div>
     </div>
     <div class="management-content">

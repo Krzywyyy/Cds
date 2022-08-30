@@ -60,8 +60,6 @@ export abstract class CdManagement implements OnInit {
         return this.cdSorts.ascending === "ascending" ? cdList : cdList.reverse();
     }
 
-    abstract refreshElements(): void;
-
     addElement() {
         this.formManagement.showForm(this.formManagement.forms.cdForm);
     }
@@ -69,6 +67,20 @@ export abstract class CdManagement implements OnInit {
     editElement(cd: any) {
         window.alert("Edytuj: " + cd)
     }
+
+    uploadFileButton() {
+        document.getElementById("uploadFileInput")?.click();
+    }
+
+    uploadFile(event: any) {
+        let file = event.srcElement.files.item(0);
+        if (!file) {
+            return;
+        }
+        this.cdService.uploadFile(file);
+    }
+
+    abstract refreshElements(): void;
 
     deleteCheckedElements() {
         if (!confirm("Jesteś pewny/a?")) {

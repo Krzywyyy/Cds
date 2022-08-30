@@ -24,6 +24,13 @@ export class CdService {
     }
 
     add(cd: any): void {
-        this.httpClient.post(this.url, cd);
+        this.httpClient.post(this.url, cd).subscribe();;
+    }
+
+    uploadFile(file: any) {
+        const formData: FormData = new FormData();
+        formData.append("file", file);
+
+        this.httpClient.post(this.url + "/upload", formData).subscribe();
     }
 }
