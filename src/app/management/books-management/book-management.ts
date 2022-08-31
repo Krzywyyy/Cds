@@ -21,6 +21,7 @@ export abstract class BookManagement implements OnInit {
   ) { }
 
   ngOnInit(): void {
+    this.refreshElements();
   }
 
   getBooksToDisplay(): Array<Book> {
