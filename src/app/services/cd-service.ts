@@ -19,7 +19,7 @@ export class CdService {
         return this.httpClient.get<Array<Cd>>(this.url + "/wanted");
     }
 
-    delete(id: number): void {
+    delete(id: any): void {
         this.httpClient.delete(this.url + "/" + id).subscribe();
     }
 

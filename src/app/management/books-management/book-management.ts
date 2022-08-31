@@ -62,6 +62,18 @@ export abstract class BookManagement implements OnInit {
       .subscribe(() => this.refreshElements());
   }
 
+  uploadFileButton() {
+    document.getElementById("uploadFileInput")?.click();
+  }
+
+  uploadFile(event: any) {
+    let file = event.srcElement.files.item(0);
+    if (!file) {
+      return;
+    }
+    this.bookService.uploadFile(file);
+  }
+
   editElement(book: any) {
     window.alert("Edytuj: " + book)
   }
@@ -74,13 +86,15 @@ export abstract class BookManagement implements OnInit {
       .map(row => row.getElementsByTagName("td"))
       .filter(row => (row[0].childNodes[0] as HTMLInputElement).checked)
       .map(row => row[1].childNodes[0].textContent)
-      .forEach(cdId => this.deleteElement(cdId, true));
+      .forEach(cdId => this.bookService.delete(cdId));
+    this.refreshElements();
   }
 
-  deleteElement(id: any, auto: boolean) {
-    if (auto || confirm("Jesteś pewny/a?")) {
-      this.bookService.delete(id);
-      this.refreshElements();
+  deleteElement(id: any) {
+    if (!confirm("Jesteś pewny/a?")) {
+      return;
     }
+    this.bookService.delete(id);
+    this.refreshElements();
   }
 }

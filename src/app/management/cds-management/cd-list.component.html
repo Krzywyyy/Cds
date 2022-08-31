@@ -79,7 +79,7 @@
                     <td>{{cd.year}}</td>
                     <td>{{cd.genre}}</td>
                     <td class="action" (click)="editElement(cd)">Edytuj</td>
-                    <td class="action" (click)="deleteElement(cd.id, false)">Usuń</td>
+                    <td class="action" (click)="deleteElement(cd.id)">Usuń</td>
                 </tr>
                 <tr *ngIf="getCdsToDisplay().length === 0">
                     <td colspan="6" class="no-cds-info">

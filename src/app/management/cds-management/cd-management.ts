@@ -91,13 +91,15 @@ export abstract class CdManagement implements OnInit {
             .map(row => row.getElementsByTagName("td"))
             .filter(row => (row[0].childNodes[0] as HTMLInputElement).checked)
             .map(row => row[1].childNodes[0].textContent)
-            .forEach(cdId => this.deleteElement(cdId, true));
+            .forEach(cdId => this.cdService.delete(cdId));
+        this.refreshElements();
     }
 
-    deleteElement(id: any, auto: boolean) {
-        if (auto || confirm("Jesteś pewny/a?")) {
-            this.cdService.delete(id);
-            this.refreshElements();
+    deleteElement(id: any) {
+        if (confirm("Jesteś pewny/a?")) {
+            return;
         }
+        this.cdService.delete(id);
+        this.refreshElements();
     }
 }

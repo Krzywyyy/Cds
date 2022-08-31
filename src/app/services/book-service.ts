@@ -19,11 +19,18 @@ export class BookService {
         return this.httpClient.get<Array<Book>>(this.url + "/wanted");
     }
 
-    delete(id: number): void {
+    delete(id: any): void {
         this.httpClient.delete(this.url + "/" + id).subscribe();
     }
 
     add(book: any): void {
         this.httpClient.post(this.url, book).subscribe();
+    }
+
+    uploadFile(file: any) {
+        const formData: FormData = new FormData();
+        formData.append("file", file);
+
+        this.httpClient.post(this.url + "/upload", formData).subscribe();
     }
 }
