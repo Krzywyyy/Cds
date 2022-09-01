@@ -60,7 +60,7 @@ export abstract class BookManagement implements OnInit {
 
   addElement() {
     this.formManagement.showForm(this.formManagement.forms.bookForm)?.afterClosed()
-      .subscribe(() => this.refreshElements());
+      .subscribe(() => this.refreshElementsAfterUpdate());
   }
 
   uploadFileButton() {
@@ -73,6 +73,7 @@ export abstract class BookManagement implements OnInit {
       return;
     }
     this.bookService.uploadFile(file);
+    this.refreshElementsAfterUpdate();
   }
 
   editElement(book: any) {
@@ -88,7 +89,7 @@ export abstract class BookManagement implements OnInit {
       .filter(row => (row[0].childNodes[0] as HTMLInputElement).checked)
       .map(row => row[1].childNodes[0].textContent)
       .forEach(cdId => this.bookService.delete(cdId));
-    this.refreshElements();
+    this.refreshElementsAfterUpdate();
   }
 
   deleteElement(id: any) {
@@ -96,6 +97,10 @@ export abstract class BookManagement implements OnInit {
       return;
     }
     this.bookService.delete(id);
-    this.refreshElements();
+    this.refreshElementsAfterUpdate();
+  }
+
+  refreshElementsAfterUpdate() {
+    setTimeout(() => this.refreshElements(), 1000);
   }
 }

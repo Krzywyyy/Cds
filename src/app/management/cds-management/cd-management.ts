@@ -62,7 +62,7 @@ export abstract class CdManagement implements OnInit {
 
     addElement() {
         this.formManagement.showForm(this.formManagement.forms.cdForm)?.afterClosed()
-            .subscribe(() => this.refreshElements());
+            .subscribe(() => this.refreshElementsAfterUpdate());
     }
 
     editElement(cd: any) {
@@ -79,6 +79,7 @@ export abstract class CdManagement implements OnInit {
             return;
         }
         this.cdService.uploadFile(file);
+        this.refreshElementsAfterUpdate();
     }
 
     abstract refreshElements(): void;
@@ -92,7 +93,7 @@ export abstract class CdManagement implements OnInit {
             .filter(row => (row[0].childNodes[0] as HTMLInputElement).checked)
             .map(row => row[1].childNodes[0].textContent)
             .forEach(cdId => this.cdService.delete(cdId));
-        this.refreshElements();
+        this.refreshElementsAfterUpdate();
     }
 
     deleteElement(id: any) {
@@ -100,6 +101,10 @@ export abstract class CdManagement implements OnInit {
             return;
         }
         this.cdService.delete(id);
-        this.refreshElements();
+        this.refreshElementsAfterUpdate();
+    }
+
+    refreshElementsAfterUpdate() {
+      setTimeout(() => this.refreshElements(), 1000);
     }
 }
