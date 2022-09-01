@@ -10,7 +10,7 @@ export class WantedBooksComponent extends BookManagement {
   title = "Lista pożądanych książek";
 
   refreshElements() {
-    this.bookService.getAllOwned()
+    this.bookService.getAllWanted()
       .subscribe(data => this.books = data);
   }
 }
