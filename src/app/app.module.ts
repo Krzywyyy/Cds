@@ -17,6 +17,7 @@ import { WantedCdsComponent } from './management/cds-management/wanted-cds.compo
 import { OwnedBooksComponent } from './management/books-management/owned-books.component';
 import { WantedBooksComponent } from './management/books-management/wanted-books.component';
 import { BookFormComponent } from './management/books-management/book-form/book-form.component';
+import { AdmService } from './services/adm-service';
 
 @NgModule({
   declarations: [
@@ -41,7 +42,8 @@ import { BookFormComponent } from './management/books-management/book-form/book-
   ],
   providers: [
     CdService,
-    BookService
+    BookService,
+    AdmService
   ],
   bootstrap: [AppComponent]
 })

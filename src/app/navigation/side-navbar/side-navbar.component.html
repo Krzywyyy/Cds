@@ -4,9 +4,10 @@
         <a routerLink="cds/wanted" routerLinkActive="active-link">Pożądane płyty CD</a>
         <a routerLink="books/owned" routerLinkActive="active-link">Posiadane książki</a>
         <a routerLink="books/wanted" routerLinkActive="active-link">Pożądane książki</a>
-        <!-- <a routerLink="statistics" routerLinkActive="active-link">Statystyki</a> -->
     </div>
-    <div class="side-navigation-sign">
+    <input class="adm-input adm" type="text" placeholder="Podaj hasło">
+    <button class="adm-confirm-button">Adminuj</button>
+    <div class="side-navigation-sign" (click)="admPanelAction()">
         #Kostrzewscy
     </div>
 </div>

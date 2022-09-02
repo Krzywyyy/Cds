@@ -4,6 +4,7 @@
     height: 100%;
     background-color: whitesmoke;
     border-right: 2px solid lightgray;
+    align-items: center;
 }
 
 .side-navigation-entries {
@@ -34,4 +35,12 @@
     font-weight: bold;
     text-shadow: 2px 2px lightgray;
     cursor: default;
+}
+
+.adm-input {
+    padding: 3px 5px;
+}
+
+.adm-confirm-button {
+    padding: 3px 5px;
 }
