@@ -5,9 +5,11 @@
         <a routerLink="books/owned" routerLinkActive="active-link">Posiadane książki</a>
         <a routerLink="books/wanted" routerLinkActive="active-link">Pożądane książki</a>
     </div>
-    <input class="adm-input adm" type="text" placeholder="Podaj hasło">
-    <button class="adm-confirm-button">Adminuj</button>
-    <div class="side-navigation-sign" (click)="admPanelAction()">
+    <div class="adm-panel" *ngIf="showAdmPanel()">
+        <input class="adm-input" type="text" placeholder="Podaj hasło">
+        <button class="adm-confirm-button">Adminuj</button>
+    </div>
+    <div class="side-navigation-sign" (click)="admPanelSneakyClick()">
         #Kostrzewscy
     </div>
 </div>

@@ -37,10 +37,13 @@
     cursor: default;
 }
 
-.adm-input {
-    padding: 3px 5px;
-}
-
-.adm-confirm-button {
-    padding: 3px 5px;
+.adm-panel {
+    .adm-input {
+        padding: 3px 5px;
+        width: 100px;
+        margin-right: 10px;
+    }
+    .adm-confirm-button {
+        padding: 3px 5px;
+    }
 }

@@ -13,13 +13,11 @@ export class SideNavbarComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  admPanelAction() {
-    console.log("Klikłem")
+  admPanelSneakyClick() {
     this.admClickCount++;
-
-    if(this.admClickCount >= 3){
-      document.getElementById("adm-panel")!.style.display = "inline-block"
-    }
   }
 
+  showAdmPanel() {
+    return this.admClickCount % 3 == 0 && this.admClickCount > 0;
+  }
 }
