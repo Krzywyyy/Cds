@@ -2,6 +2,7 @@ import { Component, OnInit } from "@angular/core";
 import { Cd } from "src/app/model/cds/cd";
 import { CdListFilters } from "src/app/model/cds/cd-list-filters";
 import { CdListSorts } from "src/app/model/cds/cd-list-sorts";
+import { AdmService } from "src/app/services/adm-service";
 import { CdService } from "src/app/services/cd-service";
 import { FormManagement } from "../form-management";
 
@@ -17,7 +18,8 @@ export abstract class CdManagement implements OnInit {
 
     constructor(
         public formManagement: FormManagement,
-        public cdService: CdService
+        public cdService: CdService,
+        public admService: AdmService
     ) { }
 
     ngOnInit(): void {

@@ -9,10 +9,10 @@ export class AdmService {
     constructor() { }
 
     becomeAdm() {
-        localStorage.setItem(this.ADM_MODE, "SuperUser");
+        sessionStorage.setItem(this.ADM_MODE, "");
     }
 
     isAdm(): boolean {
-        return localStorage.getItem(this.ADM_MODE) != null;
+        return sessionStorage.getItem(this.ADM_MODE) != null;
     }
 }

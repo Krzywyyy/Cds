@@ -35,12 +35,13 @@
     font-weight: bold;
     text-shadow: 2px 2px lightgray;
     cursor: default;
+    user-select: none;
 }
 
 .adm-panel {
     .adm-input {
         padding: 3px 5px;
-        width: 100px;
+        width: 75px;
         margin-right: 10px;
     }
     .adm-confirm-button {

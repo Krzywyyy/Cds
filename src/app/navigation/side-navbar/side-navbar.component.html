@@ -6,8 +6,8 @@
         <a routerLink="books/wanted" routerLinkActive="active-link">Pożądane książki</a>
     </div>
     <div class="adm-panel" *ngIf="showAdmPanel()">
-        <input class="adm-input" type="text" placeholder="Podaj hasło">
-        <button class="adm-confirm-button">Adminuj</button>
+        <input id="adm-input" class="adm-input" type="text" placeholder="Podaj hasło">
+        <button class="adm-confirm-button" (click)="becomeSuperUser()">Adminuj</button>
     </div>
     <div class="side-navigation-sign" (click)="admPanelSneakyClick()">
         #Kostrzewscy

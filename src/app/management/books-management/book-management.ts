@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Book } from 'src/app/model/books/book';
 import { BookListFilters } from 'src/app/model/books/book-list-filters';
 import { BookListSorts } from 'src/app/model/books/book-list-sorts';
+import { AdmService } from 'src/app/services/adm-service';
 import { BookService } from 'src/app/services/book-service';
 import { FormManagement } from '../form-management';
 
@@ -17,7 +18,8 @@ export abstract class BookManagement implements OnInit {
 
   constructor(
     public formManagement: FormManagement,
-    public bookService: BookService
+    public bookService: BookService,
+    public admService: AdmService
   ) { }
 
   ngOnInit(): void {

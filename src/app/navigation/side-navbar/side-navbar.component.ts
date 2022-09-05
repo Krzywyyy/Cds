@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { AdmService } from 'src/app/services/adm-service';
 
 @Component({
   selector: 'app-side-navbar',
@@ -8,7 +9,7 @@ import { Component, OnInit } from '@angular/core';
 export class SideNavbarComponent implements OnInit {
 
   admClickCount = 0;
-  constructor() { }
+  constructor(private admService: AdmService) { }
 
   ngOnInit(): void {
   }
@@ -18,6 +19,14 @@ export class SideNavbarComponent implements OnInit {
   }
 
   showAdmPanel() {
-    return this.admClickCount % 3 == 0 && this.admClickCount > 0;
+    let correctlyClicked = this.admClickCount % 3 == 0 && this.admClickCount > 0;
+    return correctlyClicked && !this.admService.isAdm();
+  }
+
+  becomeSuperUser() {
+    let code = (document.getElementById("adm-input") as HTMLInputElement).value;
+    if (code === "masło") {
+      this.admService.becomeAdm();
+    }
   }
 }
