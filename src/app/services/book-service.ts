@@ -35,6 +35,6 @@ export class BookService {
     }
 
     edit(book: any): void {
-        this.httpClient.put(this.url + "/edit", book).subscribe();
+        this.httpClient.put(this.url, book).subscribe();
     }
 }

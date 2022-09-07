@@ -35,6 +35,6 @@ export class CdService {
     }
 
     edit(cd: any): void {
-        this.httpClient.put(this.url + "/edit", cd).subscribe();
+        this.httpClient.put(this.url, cd).subscribe();
     }
 }
