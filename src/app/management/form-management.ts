@@ -1,5 +1,5 @@
 import { Injectable } from "@angular/core";
-import { MatDialog } from "@angular/material/dialog";
+import { MatDialog, MatDialogConfig } from "@angular/material/dialog";
 import { BookFormComponent } from "./books-management/book-form/book-form.component";
 import { CdFormComponent } from "./cds-management/cd-form/cd-form.component";
 
@@ -12,18 +12,22 @@ export class FormManagement {
         "cdForm": 0,
         "bookForm": 1,
     }
+    dialogConfig: MatDialogConfig = new MatDialogConfig();
 
     constructor(private matDialog: MatDialog) {
     }
 
-    showForm = (elementType: any) => {
+    showForm = (elementType: any, data?: any) => {
+        if (data) {
+            this.dialogConfig.data = data;
+        }
         switch (elementType) {
             case this.forms.cdForm:
-                return this.matDialog.open(CdFormComponent);
+                return this.matDialog.open(CdFormComponent, this.dialogConfig);
             case this.forms.bookForm:
-                return this.matDialog.open(BookFormComponent);
+                return this.matDialog.open(BookFormComponent, this.dialogConfig);
             default:
-                return null;
+                return;
         }
     }
 

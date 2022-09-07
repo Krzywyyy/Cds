@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Inject, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
+import { MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { BookService } from 'src/app/services/book-service';
 
 @Component({
@@ -15,9 +16,27 @@ export class BookFormComponent implements OnInit {
     owned: new FormControl()
   })
 
-  constructor(private bookService: BookService) { }
+  constructor(private bookService: BookService,
+    @Inject(MAT_DIALOG_DATA) public data: any
+    ) { 
+      if(data){
+        this.fillDataIfEditMode();
+      }
+    }
 
   ngOnInit(): void {
+  }
+  
+  fillDataIfEditMode() {
+    console.log(this.data)
+    this.addBookForm.patchValue(
+      {
+        author: this.data.author,
+        title: this.data.title,
+        year: this.data.year,
+        owned: this.data.owned ? "owned" : "wanted"
+      }
+    )
   }
 
   onSubmit(): void {

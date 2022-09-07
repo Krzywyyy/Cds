@@ -79,7 +79,8 @@ export abstract class BookManagement implements OnInit {
   }
 
   editElement(book: any) {
-    window.alert("Edytuj: " + book)
+    this.formManagement.showForm(this.formManagement.forms.bookForm, book)?.afterClosed()
+      .subscribe(() => this.refreshElementsAfterUpdate());
   }
 
   deleteCheckedElements() {

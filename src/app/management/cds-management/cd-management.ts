@@ -68,7 +68,8 @@ export abstract class CdManagement implements OnInit {
     }
 
     editElement(cd: any) {
-        window.alert("Edytuj: " + cd)
+        this.formManagement.showForm(this.formManagement.forms.cdForm, cd)?.afterClosed()
+            .subscribe(() => this.refreshElementsAfterUpdate());
     }
 
     uploadFileButton() {
@@ -107,6 +108,6 @@ export abstract class CdManagement implements OnInit {
     }
 
     refreshElementsAfterUpdate() {
-      setTimeout(() => this.refreshElements(), 1000);
+        setTimeout(() => this.refreshElements(), 1000);
     }
 }
