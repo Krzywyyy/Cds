@@ -18,9 +18,7 @@ export class FormManagement {
     }
 
     showForm = (elementType: any, data?: any) => {
-        if (data) {
-            this.dialogConfig.data = data;
-        }
+        this.dialogConfig.data = data;
         switch (elementType) {
             case this.forms.cdForm:
                 return this.matDialog.open(CdFormComponent, this.dialogConfig);

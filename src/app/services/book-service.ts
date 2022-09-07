@@ -33,4 +33,8 @@ export class BookService {
 
         this.httpClient.post(this.url + "/upload", formData).subscribe();
     }
+
+    edit(book: any): void {
+        this.httpClient.put(this.url + "/edit", book).subscribe();
+    }
 }

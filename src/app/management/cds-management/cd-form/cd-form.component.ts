@@ -11,6 +11,7 @@ import { CdService } from 'src/app/services/cd-service';
 export class CdFormComponent implements OnInit {
 
   addCdForm = new FormGroup({
+    id: new FormControl(),
     band: new FormControl(),
     album: new FormControl(),
     year: new FormControl(),
@@ -21,31 +22,35 @@ export class CdFormComponent implements OnInit {
   constructor(
     private cdService: CdService,
     @Inject(MAT_DIALOG_DATA) public data: any
-    ) { 
-      if(data){
-        this.fillDataIfEditMode();
-      }
+  ) {
+    if (data) {
+      this.fillDataIfEditMode();
     }
+  }
 
-    fillDataIfEditMode() {
-      console.log(this.data)
-      this.addCdForm.patchValue(
-        {
-          band: this.data.band,
-          album: this.data.album,
-          year: this.data.year,
-          genre: this.data.genre,
-          owned: this.data.owned ? "owned" : "wanted"
-        }
-      )
-    }
+  fillDataIfEditMode() {
+    this.addCdForm.patchValue(
+      {
+        id: this.data.id,
+        band: this.data.band,
+        album: this.data.album,
+        year: this.data.year,
+        genre: this.data.genre,
+        owned: this.data.owned ? "owned" : "wanted"
+      }
+    )
+  }
 
   ngOnInit(): void {
   }
 
   onSubmit(): void {
     this.addCdForm.value.owned = this.addCdForm.value.owned == "owned" ? true : false;
-    this.cdService.add(this.addCdForm.value);
+    if (this.addCdForm.value.id) {
+      this.cdService.edit(this.addCdForm.value);
+    } else {
+      this.cdService.add(this.addCdForm.value);
+    }
     document.getElementById("dirty-close-button")?.click();
   }
 }

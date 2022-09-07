@@ -33,4 +33,8 @@ export class CdService {
 
         this.httpClient.post(this.url + "/upload", formData).subscribe();
     }
+
+    edit(cd: any): void {
+        this.httpClient.put(this.url + "/edit", cd).subscribe();
+    }
 }
